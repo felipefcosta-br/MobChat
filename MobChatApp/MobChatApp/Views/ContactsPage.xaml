@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:helpers="clr-namespace:MobChatApp.Constants"
+             xmlns:effect="clr-namespace:MobChatApp.Helpers.RoundEffect"
+             mc:Ignorable="d"
+             x:Class="MobChatApp.Views.ContactsPage"
+             Visual="Material">
+    <ContentPage.Resources>
+        <Style x:Key="AddContactBtn" TargetType="Button">
+            <Setter Property="BackgroundColor">#0086AD</Setter>
+            <Setter Property="WidthRequest">50</Setter>
+            <Setter Property="HeightRequest">50</Setter>
+            <Setter Property="HorizontalOptions">Center</Setter>
+            <Setter Property="FontFamily">MaterialFont</Setter>
+            <Setter Property="FontSize">32</Setter>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <StackLayout>
+                
+            </StackLayout>
+            <Button 
+                x:Name="AddContactButton" Style="{DynamicResource AddContactBtn}"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds=".9, .95, AutoSize, AutoSize"
+                Text="{x:Static helpers:IconFont.Plus}"
+                Clicked="AddContactButton_Clicked">
+                <Button.Effects>
+                    <effect:RoundEffect />
+                </Button.Effects>
+            </Button>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

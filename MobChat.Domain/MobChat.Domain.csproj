@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
+    <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MobChat.Common.Domain\MobChat.Common.Domain.csproj" />
+    <ProjectReference Include="..\MobChat.Infra.AzureADB2C\MobChat.Infra.AzureADB2C.csproj" />
+    <ProjectReference Include="..\MobChat.Infra.HttpService\MobChat.Infra.HttpService.csproj" />
+    <ProjectReference Include="..\MobChat.Infra.StorageService\MobChat.Infra.StorageService.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Drawing.Common">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Drawing.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

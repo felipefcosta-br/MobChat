@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MobChatApp.Views.PrivateChatsPage"
+             xmlns:effect="clr-namespace:MobChatApp.Helpers.RoundEffect"
+             Visual="Material">
+    <ContentPage.Resources>
+        <Style x:Name="UserContainer_StackLayout" TargetType="StackLayout">
+            <Setter Property="HorizontalOptions">FillAndExpand</Setter>
+            <Setter Property="Margin">0</Setter>
+            <Setter Property="Padding">0</Setter>
+        </Style>
+        <Style x:Name="Chats_ListView" TargetType="ListView">
+            <Setter Property="HorizontalOptions">FillAndExpand</Setter>
+            <Setter Property="VerticalOptions">FillAndExpand</Setter>
+            <Setter Property="HasUnevenRows">True</Setter>
+            <Setter Property="SelectionMode">None</Setter>
+        </Style>
+        <Style x:Name="Chat_Grid" TargetType="Grid">
+            <Setter Property="Margin">0, 10</Setter>
+        </Style>
+        <Style x:Name="Image_User" TargetType="Image">
+            <Setter Property="HorizontalOptions">Center</Setter>
+            <Setter Property="HeightRequest">50</Setter>
+            <Setter Property="WidthRequest">50</Setter>
+        </Style>
+        <Style x:Name="Label_UserName" TargetType="Label">
+            <Setter Property="HorizontalOptions">Start</Setter>
+            <Setter Property="VerticalOptions">Center</Setter>
+            <Setter Property="FontSize">20</Setter>
+            <Setter Property="TextColor">#222222</Setter>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView 
+                x:Name="ChatsListView"
+                Style="{DynamicResource Chats_ListView}"
+                ItemTapped="ChatsListView_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid
+                                Style="{DynamicResource Chat_Grid}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"></ColumnDefinition>
+                                    <ColumnDefinition Width="85*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Source="{Binding ContactPhoto}">
+                                    <Image.Effects>
+                                        <effect:RoundEffect />
+                                    </Image.Effects>
+                                </Image>
+                                <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Style="{DynamicResource Label_UserName}"                                
+                                Text="{Binding ContactName}" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

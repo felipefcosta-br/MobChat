@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MobChatApp.Views.LoginPage"
+             Visual="Material"
+             Shell.NavBarIsVisible="False"
+             Shell.FlyoutBehavior="Disabled"
+             BackgroundColor="#0086AD"
+             xmlns:components="clr-namespace:MobChatApp.Components">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BtnSignInStyle" TargetType="Button">
+                <Setter Property="BackgroundColor">Transparent</Setter>
+                <Setter Property="BorderWidth">0.5</Setter>
+                <Setter Property="BorderColor">#FFFFFF</Setter>
+                <Setter Property="CornerRadius">5</Setter>
+                <Setter Property="TextColor">#E3ECF2</Setter>
+                <Setter Property="FontSize">20</Setter>
+                <Setter Property="FontAttributes">Bold</Setter>
+                <Setter Property="Margin">0, 40</Setter>
+                <Setter Property="Padding">0, 8</Setter>
+                <Setter Property="VerticalOptions">Center</Setter>
+            </Style>
+            <Style x:Key="LblMobChat" TargetType="Label">
+                <Setter Property="TextColor">#F6F9FB</Setter>
+                <Setter Property="FontSize">30</Setter>
+                <Setter Property="FontFamily">BoldFont</Setter>
+                <Setter Property="HorizontalOptions">CenterAndExpand</Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <StackLayout AbsoluteLayout.LayoutBounds=".5, .4, .5, .5" AbsoluteLayout.LayoutFlags="All">
+                <Label x:Name="LblMobChat" Style="{DynamicResource LblMobChat}" Text="MobChat" />
+            </StackLayout>
+            <StackLayout Spacing="20"
+                AbsoluteLayout.LayoutBounds=".5, .95,.75 ,.3" AbsoluteLayout.LayoutFlags="All">
+                <components:OutlineButton x:Name="BtnSignIn" Style="{DynamicResource BtnSignInStyle}" Text="Começar"  Clicked="BtnSignIn_Clicked"  />
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

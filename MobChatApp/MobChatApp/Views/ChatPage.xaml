@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobChatApp.Views.ChatPage"
+             xmlns:helpers="clr-namespace:MobChatApp.Constants"
+             xmlns:components="clr-namespace:MobChatApp.Components"
+             xmlns:effect="clr-namespace:MobChatApp.Helpers.RoundEffect"
+             xmlns:dataTemplate="clr-namespace:MobChatApp.Resources"
+             Visual="Material">
+    <ContentPage.Resources>
+        <Style x:Key="ALChatContainer" TargetType="AbsoluteLayout">
+            <Setter Property="HorizontalOptions">FillAndExpand</Setter>
+            <Setter Property="VerticalOptions">FillAndExpand</Setter>
+            <Setter Property="BackgroundColor">#F6F9FB</Setter>
+            <Setter Property="Margin">0</Setter>
+            <Setter Property="Padding">0</Setter>
+        </Style>
+        <Style x:Key="NavContainerStack" TargetType="StackLayout">
+            <Setter Property="HorizontalOptions">StartAndExpand</Setter>
+            <Setter Property="Orientation">Horizontal</Setter>
+            <Setter Property="Margin">0</Setter>
+            <Setter Property="Padding">0</Setter>
+        </Style>
+
+        <Style x:Key="BackOutLineBtn" TargetType="components:OutlineButton">
+            <Setter Property="BorderWidth">0</Setter>
+            <Setter Property="HorizontalOptions">StartAndExpand</Setter>
+            <Setter Property="VerticalOptions">Center</Setter>
+            <Setter Property="WidthRequest">30</Setter>
+            <Setter Property="BackgroundColor">#0086AD</Setter>
+            <Setter Property="Margin">0</Setter>
+            <Setter Property="Padding">0</Setter>
+            <Setter Property="FontFamily">MaterialFont</Setter>
+            <Setter Property="TextColor">#FFFFFF</Setter>
+            <Setter Property="FontSize">30</Setter>
+        </Style>
+        <Style x:Name="NavUserImage" TargetType="Image">
+            <Setter Property="HorizontalOptions">Center</Setter>
+            <Setter Property="VerticalOptions">Center</Setter>
+            <Setter Property="HeightRequest">38</Setter>
+            <Setter Property="WidthRequest">38</Setter>
+        </Style>
+        <Style x:Key="NavTitleLabel" TargetType="Label">
+            <Setter Property="HorizontalOptions">StartAndExpand</Setter>
+            <Setter Property="VerticalOptions">Center</Setter>
+            <Setter Property="FontSize">20</Setter>
+            <Setter Property="TextColor">#FFFFFF</Setter>
+        </Style>
+        <Style x:Key="GridChatContainer" TargetType="Grid">
+            <Setter Property="HorizontalOptions">FillAndExpand</Setter>
+            <Setter Property="VerticalOptions">FillAndExpand</Setter>
+            <Setter Property="Margin">0</Setter>
+            <Setter Property="Padding">10</Setter>
+        </Style>
+        <Style x:Key="UserMessageFrame" TargetType="Frame">
+            <Setter Property="HorizontalOptions">End</Setter>
+            <Setter Property="BackgroundColor">#FFFFFF</Setter>
+            <Setter Property="CornerRadius">8</Setter>
+            <Setter Property="HasShadow">true</Setter>
+            <Setter Property="Margin">60, 0, 0, 0</Setter>
+            <Setter Property="Padding">10</Setter>
+        </Style>
+        <Style x:Key="ContactMessageFrame" TargetType="Frame">
+            <Setter Property="HorizontalOptions">Start</Setter>
+            <Setter Property="BackgroundColor">#FFFFFF</Setter>
+            <Setter Property="CornerRadius">8</Setter>
+            <Setter Property="HasShadow">true</Setter>
+            <Setter Property="Margin">0, 0, 60, 0</Setter>
+            <Setter Property="Padding">10</Setter>
+        </Style>
+        <Style x:Key="ContactNameLbl" TargetType="Label">
+            <Setter Property="FontSize">18</Setter>
+            <Setter Property="FontAttributes">Bold</Setter>
+            <Setter Property="Margin">0</Setter>
+            <Setter Property="Padding">0</Setter>
+        </Style>
+        <Style x:Key="ContactMessageLbl" TargetType="Label">
+            <Setter Property="FontSize">16</Setter>
+            <Setter Property="Margin">0</Setter>
+            <Setter Property="Padding">0</Setter>
+        </Style>
+        <Style x:Key="MessageCompContainer" TargetType="StackLayout">
+            <Setter Property="AbsoluteLayout.LayoutFlags">PositionProportional</Setter>
+            <Setter Property="AbsoluteLayout.LayoutBounds">0, 0.98, AutoSize, AutoSize</Setter>
+            <Setter Property="Padding">5</Setter>
+        </Style>
+        <Style x:Key="MessageListView" TargetType="ListView">
+            <Setter Property="HorizontalOptions">FillAndExpand</Setter>
+            <Setter Property="VerticalOptions">FillAndExpand</Setter>
+            <Setter Property="SeparatorVisibility">None</Setter>
+        </Style>
+        <Style x:Key="NewMessageFrame" TargetType="Frame">
+            <Setter Property="HorizontalOptions">Fill</Setter>
+            <Setter Property="VerticalOptions">End</Setter>
+            <Setter Property="BackgroundColor">#FFFFFF</Setter>
+            <Setter Property="CornerRadius">5</Setter>
+            <Setter Property="Margin">0, 0, 2, 0</Setter>
+            <Setter Property="Padding">5, 0</Setter>
+        </Style>
+        <Style x:Key="SendNewMessageButton" TargetType="Button">
+            <Setter Property="HorizontalOptions">Fill</Setter>
+            <Setter Property="VerticalOptions">End</Setter>
+            <Setter Property="BackgroundColor">#0086AD</Setter>
+            <Setter Property="CornerRadius">5</Setter>
+            <Setter Property="Margin">2, 0, 0, 0</Setter>
+            <Setter Property="Padding">0</Setter>
+            <Setter Property="FontFamily">MaterialFont</Setter>
+            <Setter Property="FontSize">30</Setter>
+            <Setter Property="TextColor">#FFFFFF</Setter>
+        </Style>
+
+        <DataTemplate x:Key="contactMessageTemplate">
+            <Grid
+                Rotation="180"
+                Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="33*" />
+                    <ColumnDefinition Width="33*" />
+                    <ColumnDefinition Width="33*" />
+                </Grid.ColumnDefinitions>
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Style="{DynamicResource ContactMessageFrame}">
+                    <Label
+                        x:Name="ContactMessageLbl"
+                        Style="{DynamicResource ContactMessageLbl}"
+                        Text="{Binding Message}" />
+                </Frame>
+
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="userMessageTemplate">
+            <Grid
+                Rotation="180"
+                Margin="5">                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="33*" />
+                    <ColumnDefinition Width="33*" />
+                    <ColumnDefinition Width="33*" />
+                </Grid.ColumnDefinitions>
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Style="{DynamicResource UserMessageFrame}">
+                    <Label
+                        x:Name="UserMessageLbl"
+                        Style="{DynamicResource ContactMessageLbl}"
+                        Text="{Binding Message}" />
+                </Frame>
+            </Grid>
+        </DataTemplate>
+        <dataTemplate:MessageDataTemplateSelector 
+                x:Key="MessageDataTemplateSelector"                     
+                ContactMessageTemplate="{StaticResource contactMessageTemplate}"
+                UserMessageTemplate="{StaticResource userMessageTemplate}" />
+    </ContentPage.Resources>
+    
+    <NavigationPage.TitleView>
+        <StackLayout
+            Style="{DynamicResource NavContainerStack}">
+            <components:OutlineButton
+                x:Name="BackButtonNavBar"
+                Style="{DynamicResource BackOutLineBtn}"
+                Text="{x:Static helpers:IconFont.ArrowLeft}"
+                Clicked="BackButtonNavBar_Clicked"/>
+            <Image
+                Source="{Binding Photo}">
+                <Image.Effects>
+                    <effect:RoundEffect />
+                </Image.Effects>
+            </Image>
+            <Label
+                Style="{DynamicResource NavTitleLabel}">
+                <Label.Text>
+                    <MultiBinding StringFormat="{}{0} {1}">
+                        <Binding Path="Name" />
+                        <Binding Path="LastName" />
+                    </MultiBinding>
+                </Label.Text>
+            </Label>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content >
+        <Grid
+            RowSpacing="0"
+            ColumnSpacing="3"
+            Style="{DynamicResource GridChatContainer}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90*" />
+                <RowDefinition Height="10*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="85*" />
+                <ColumnDefinition Width="15*" />
+            </Grid.ColumnDefinitions>
+            
+            <CollectionView
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                x:Name="MessagesCollectionView"
+                Rotation="180"
+                ItemTemplate="{StaticResource MessageDataTemplateSelector}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"
+                           ItemSpacing="8" />
+                </CollectionView.ItemsLayout>
+            </CollectionView>
+
+            <Frame
+                Grid.Row="1"
+                Grid.Column="0"
+                Style="{DynamicResource NewMessageFrame}">
+                <components:SimpleEntry
+                    x:Name="UserMessageEntry"
+                    Placeholder="Mensagem"
+                    TextChanged="UserMessageEntry_TextChanged"/>
+            </Frame>
+            <Button
+                x:Name="SendMessageBtn"
+                Grid.Row="1"
+                Grid.Column="1"
+                Style="{DynamicResource SendNewMessageButton}"
+                Text="{x:Static helpers:IconFont.Send}"
+                Clicked="SendMessageBtn_Clicked" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,20 @@
+﻿using MobChatApp.Helpers.Validators.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace MobChatApp.Helpers.Validators.Rules
+{
+    public class IsUniqueUser<T> : IValidationRule<T>
+    {
+        public string ValidationMessage { get; set; }
+
+        public bool Check(T value)
+        {
+            if (value == null)
+                return false;
+            string newUser = $"@{value}";
+           return App.MobileUserService.IsUniqueUserName(newUser).Result;
+        }
+    }
+}

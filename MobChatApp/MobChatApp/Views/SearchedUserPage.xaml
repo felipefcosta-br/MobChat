@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobChatApp.Views.SearchedUserPage"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:helpers="clr-namespace:MobChatApp.Constants"
+             xmlns:components="clr-namespace:MobChatApp.Components">
+
+    <StackLayout
+        BackgroundColor="White"
+        Margin="20"
+        Padding="0"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="CenterAndExpand">
+        <StackLayout
+            HorizontalOptions="FillAndExpand"
+            Padding="0">
+            <Image
+                Margin="10, 10, 10, 5"
+                Aspect="Fill"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                Source="{Binding Photo}"/>
+
+        </StackLayout>
+        <StackLayout>
+            <Label
+                FontSize="22"
+                Margin="10, 5, 10, 2">
+                <Label.Text>
+                    <MultiBinding StringFormat="{}{0} {1}">
+                        <Binding Path="Name" />
+                        <Binding Path="LastName" />
+                    </MultiBinding>
+                </Label.Text>
+            </Label>
+            <Label
+                FontSize="18"
+                Margin="10, 0"
+                Text="{Binding UserName}" />
+        </StackLayout>
+        <StackLayout
+            HorizontalOptions="FillAndExpand"
+            Orientation="Horizontal"
+            Margin="10">
+            <components:OutlineButton
+                x:Name="GoToChatBtn"
+                BorderWidth="1"
+                BorderColor="#E3ECF2"
+                CornerRadius="5"
+                BackgroundColor="#F6F9FB"
+                FontSize="30"
+                FontFamily="MaterialFont"
+                Text="{x:Static helpers:IconFont.CommentProcessingOutline}"
+                TextColor="#0086AD"
+                HorizontalOptions="FillAndExpand"
+                Clicked="GoToChatBtn_Clicked"/>
+            <components:OutlineButton
+                x:Name="AddContactBtn"
+                BorderWidth="1"
+                BorderColor="#E3ECF2"
+                CornerRadius="5"
+                BackgroundColor="#F6F9FB"
+                FontSize="30"
+                FontFamily="MaterialFont"
+                Text="{x:Static helpers:IconFont.AccountPlus}"
+                TextColor="#0086AD"
+                HorizontalOptions="FillAndExpand"
+                Clicked="AddContactBtn_Clicked"/>
+            
+
+        </StackLayout>
+    </StackLayout>
+
+</pages:PopupPage>

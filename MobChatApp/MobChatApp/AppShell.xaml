@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:MobChatApp.Views"
+       xmlns:helpers="clr-namespace:MobChatApp.Constants"
+       x:Class="MobChatApp.AppShell"
+       Visual="Material"
+       NavigationPage.HasNavigationBar="false">
+    <Shell.Resources>
+        <Color x:Key="NavBackground">#F6F9FB</Color>
+        <Color x:Key="IconSelectedColor">#0086AD</Color>
+        <Color x:Key="IconUnselectedColor">#707070</Color>
+        <Style x:Key="BaseStyle" TargetType="Element">
+            <Setter Property="Shell.BackgroundColor" Value="{StaticResource NavBackground}" />
+            <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource NavBackground}" />
+            <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource IconSelectedColor}" />
+            <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource IconUnselectedColor}" />
+        </Style>
+        <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+    </Shell.Resources>
+
+    <TabBar Route="main">
+        <Tab Route="privatechats">
+            <Tab.Icon>
+                <FontImageSource FontFamily="MaterialFont" Glyph="{x:Static helpers:IconFont.Forum}"  />
+            </Tab.Icon>
+            <ShellContent>
+                <views:PrivateChatsPage />
+            </ShellContent>
+        </Tab>
+        <Tab Route="hastagchats">
+            <Tab.Icon>
+                <FontImageSource FontFamily="MaterialFont" Glyph="{x:Static helpers:IconFont.PoundBox}"  />
+            </Tab.Icon>
+            <ShellContent>
+                <views:HashtagChatsPage />
+            </ShellContent>
+        </Tab>
+        <Tab Route="contacts">
+            <Tab.Icon>
+                <FontImageSource FontFamily="MaterialFont" Glyph="{x:Static helpers:IconFont.AccountMultiple}"  />
+            </Tab.Icon>
+            <ShellContent>
+                <views:ContactsPage />
+            </ShellContent>
+        </Tab>
+        <Tab Route="profile">
+            <Tab.Icon>
+                <FontImageSource FontFamily="MaterialFont" Glyph="{x:Static helpers:IconFont.AccountBox}"  />
+            </Tab.Icon>
+            <ShellContent>
+                <views:ProfilePage />
+            </ShellContent>
+        </Tab>
+    </TabBar>
+    <ShellItem Route="login">
+        <ShellContent>
+            <views:LoginPage />
+        </ShellContent>
+    </ShellItem>
+</Shell>

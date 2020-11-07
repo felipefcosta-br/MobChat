@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:helpers="clr-namespace:MobChatApp.Constants"
+             xmlns:behaviour="clr-namespace:MobChatApp.Helpers.Behaviours"
+             xmlns:converter="clr-namespace:MobChatApp.Helpers.Converters"
+             mc:Ignorable="d"
+             x:Class="MobChatApp.Views.AddUserPage"
+             Visual="Material"
+             BackgroundColor="White"
+             xmlns:components="clr-namespace:MobChatApp.Components"
+             Shell.PresentationMode="ModalAnimated">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
+            <converter:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter" />
+        </ResourceDictionary>
+        <ResourceDictionary>
+            <Style x:Key="GridUserAtt" TargetType="Grid">
+                <Setter Property="HorizontalOptions">FillAndExpand</Setter>
+                <Setter Property="VerticalOptions">FillAndExpand</Setter>
+                <Setter Property="Padding">0</Setter>
+            </Style>
+            <Style x:Key="ImgUser" TargetType="Image">
+                <Setter Property="HorizontalOptions">Fill</Setter>
+                <Setter Property="VerticalOptions">Fill</Setter>
+            </Style>
+            <Style x:Key="LblUserForm" TargetType="Label">
+                <Setter Property="FontSize">18</Setter>
+                <Setter Property="TextColor">#555555</Setter>
+                <Setter Property="Margin">0</Setter>
+                <Setter Property="HorizontalOptions">Center</Setter>
+                <Setter Property="VerticalOptions">Center</Setter>
+            </Style>
+            <Style x:Key="StackEntUserForm" TargetType="StackLayout">
+                <Setter Property="HorizontalOptions">FillAndExpand</Setter>
+                <Setter Property="VerticalOptions">FillAndExpand</Setter>
+                <Setter Property="Margin">0</Setter>
+                <Setter Property="Padding">0, 0, 16, 0</Setter>
+            </Style>
+            <Style x:Key="EntUserForm" TargetType="Entry">
+                <Setter Property="BackgroundColor">#FFFFFF</Setter>
+                <Setter Property="FontSize">18</Setter>
+                <Setter Property="TextColor">#555555</Setter>
+                <Setter Property="HorizontalOptions">Fill</Setter>
+                <Setter Property="VerticalOptions">Center</Setter>
+                <Setter Property="Margin">0</Setter>
+            </Style>
+            <Style x:Key="BtnContinue" TargetType="components:OutlineButton">
+                <Setter Property="BackgroundColor">#0086AD</Setter>
+                <Setter Property="Margin">10</Setter>
+                <Setter Property="TextColor">#FFFFFF</Setter>
+                <Setter Property="FontSize">20</Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid Style="{DynamicResource GridUserAtt}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="11*" />
+                <RowDefinition Height="11*" />
+                <RowDefinition Height="8*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="90*" />
+            </Grid.ColumnDefinitions>
+
+            <Image
+                x:Name="UserImagePreview"
+                Style="{DynamicResource ImgUser}"
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                Grid.Column="0"              
+                Source="https://mobchatapp.blob.core.windows.net/mobchat-layout/camera.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="AddUserPhoto_Tapped"
+                        NumberOfTapsRequired="1"/>
+                </Image.GestureRecognizers>
+                
+            </Image>
+
+            <Label
+                Style="{DynamicResource LblUserForm}"
+                Grid.Row="1"
+                Grid.Column="0"
+                Text="@" />
+
+            <StackLayout
+                Style="{DynamicResource StackEntUserForm}"
+                Grid.Row="1"
+                Grid.Column="1">
+                <Entry
+                    x:Name="EntUserName"
+                    Text="{Binding UserName.Value}"
+                    Style="{DynamicResource EntUserForm}"
+                    Keyboard="Text"
+                    Placeholder="Nome de usuário">
+                    <Entry.Behaviors>
+                        <behaviour:EntryLineValidationBehaviour IsValid="{Binding UserName.IsValid}" />
+                    </Entry.Behaviors>
+                </Entry>
+                <Label
+                    Text="{Binding UserName.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                    IsVisible="{Binding UserName.IsValid, Converter={StaticResource FirstValidationErrorConverter}}"
+                    Style="{StaticResource ErrorTextStyle}" />
+            </StackLayout>
+
+            <Label
+                Style="{DynamicResource LblUserForm}"
+                Grid.Row="2"
+                Grid.Column="0"
+                LineHeight="0"
+                Text="+55" />
+            <StackLayout
+                Style="{DynamicResource StackEntUserForm}"
+                Grid.Row="2"
+                Grid.Column="1">
+                <Entry
+                    x:Name="EntUserMobileNumber"
+                    Text="{Binding MobileNumber.Value}"
+                    Style="{DynamicResource EntUserForm}"                
+                    Keyboard="Telephone"
+                    Placeholder="Numero do Celular">
+                    <Entry.Behaviors>
+                        <behaviour:EntryLineValidationBehaviour IsValid="{Binding MobileNumber.IsValid}" />
+                    </Entry.Behaviors>
+                </Entry>
+                <Label
+                    Text="{Binding MobileNumber.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                    IsVisible="{Binding MobileNumber.IsValid, Converter={StaticResource FirstValidationErrorConverter}}"
+                    Style="{StaticResource ErrorTextStyle}" />
+            </StackLayout>
+
+            <Button
+                Grid.Row="3"
+                Grid.ColumnSpan="2"
+                Grid.Column="0"
+                x:Name="BtnAddUser"
+                Style="{DynamicResource BtnContinue}"
+                Text="Concluir"
+                Command="{Binding AddUserCommand}" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
