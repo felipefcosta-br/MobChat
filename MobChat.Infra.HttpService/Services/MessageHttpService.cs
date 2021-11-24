@@ -13,7 +13,7 @@ namespace MobChat.Infra.HttpService.Services
 
         public MessageHttpService()
         {
-            string url = "https://mobchatusermicroserviceapi.azurewebsites.net:5000/Hubs/ChatHub";
+            string url = "https://:5000/Hubs/ChatHub";
             hubConnection = new HubConnectionBuilder()
                .WithUrl(url)
                .Build();
