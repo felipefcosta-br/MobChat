@@ -14,7 +14,7 @@ namespace MobChat.UserMicroservice.Infra.Repositories.AppUsers
     {
 
         public AzureSqlServerUsersRepository()
-            : base(new AppUserContext("Server=tcp:mobchat-user-db-server.database.windows.net,1433;Initial Catalog=mobchat-usermicroservice-db;Persist Security Info=False;User ID=felipefcrj;Password=00Xam-Project-BR-77;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+            : base(new AppUserContext("Server=tcp:mobchat-user-db-server.database.windows.net,1433;Initial Catalog=mobchat-usermicroservice-db;Persist Security Info=False;User ID=felipefcrj;Password=;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
         {
         }
         public async Task<AppUser> FindByAccountIdAsync(Guid accountId)
