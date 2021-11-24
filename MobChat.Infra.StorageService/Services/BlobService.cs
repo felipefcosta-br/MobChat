@@ -18,7 +18,7 @@ namespace MobChat.Infra.StorageService.Services
 
         public BlobService()
         {
-            storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=mobchatapp;AccountKey=9XzNMirOuJONILVaHPg8Ur/oTYTGiVnANM1ks0xPsPPxG84gFiJrpiVwLJUc6a1iYjIsMblufW2gjTMXpQG53Q==;EndpointSuffix=core.windows.net";
+            storageConnectionString = "DefaultEndpointsProtocol";
             client = new BlobServiceClient(storageConnectionString);           
 
         }
