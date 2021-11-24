@@ -12,13 +12,13 @@ namespace MobChat.Infra.AzureADB2C.Services
     public class AzureADB2CService : IAzureADB2CService
     {
         static readonly string tenantName = "mobchat";
-        static readonly string tenantId = "mobchat.onmicrosoft.com";
-        static readonly string clientId = "8d851549-9c94-4f28-9092-b076089985f9";
-        static readonly string policySignin = "B2C_1_mobchat_signupandsignin";
-        static readonly string policyPassword = "B2C_1_mobchat_passwordreset";
-        static readonly string policyProfileEdition = "B2C_1_mobchat_profileediting";
-        static readonly string iosKeychainSecurityGroup = "com.xamarin.mobchatmobile1915120669a.adb2cauthorization";
-        static readonly string[] scopes = { "https://mobchat.onmicrosoft.com/8d851549-9c94-4f28-9092-b076089985f9/app.read" };
+        static readonly string tenantId = "";
+        static readonly string clientId = "";
+        static readonly string policySignin = "";
+        static readonly string policyPassword = "";
+        static readonly string policyProfileEdition = "";
+        static readonly string iosKeychainSecurityGroup = "";
+        static readonly string[] scopes = { "" };
         static readonly string authorityBase = $"https://{tenantName}.b2clogin.com/tfp/{tenantId}/";
         static readonly string authoritySignInSignUp = $"{authorityBase}{policySignin}";
         private static IPublicClientApplication authenticationClient;
