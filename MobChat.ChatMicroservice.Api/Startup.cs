@@ -55,7 +55,7 @@ namespace MobChat.ChatMicroservice.Api
             }).AddJwtBearer(jwtOptions =>
             {
                 
-                jwtOptions.Authority = $"https://mobchat.b2clogin.com/{Configuration["AzureAdB2C:Tenant"]}/{Configuration["AzureAdB2C:Policy"]}/v2.0";
+                jwtOptions.Authority = $"https://.b2clogin.com/{Configuration["AzureAdB2C:Tenant"]}/{Configuration["AzureAdB2C:Policy"]}/v2.0";
                 jwtOptions.Audience = Configuration["AzureAdB2C:ClientId"];
                 jwtOptions.Events = new JwtBearerEvents
                 {
@@ -66,7 +66,7 @@ namespace MobChat.ChatMicroservice.Api
                 jwtOptions.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
                 {
                     ValidAudiences = new List<string>() {
-                            "8d851549-9c94-4f28-9092-b076089985f9"
+                            ""
                         }
                 };
 
