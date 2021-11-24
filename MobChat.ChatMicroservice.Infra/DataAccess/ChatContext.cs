@@ -15,7 +15,7 @@ namespace MobChat.ChatMicroservice.Infra.DataAccess
 
         public ChatContext()
         {
-            this.dbConnectionString = "Server=tcp:mobchat-chatmicroservice-db-server.database.windows.net,1433;Initial Catalog=mobchat-chatmicroservice-db;Persist Security Info=False;User ID=felipefcrj;Password=01Xam-Project-BR-77;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            this.dbConnectionString = "";
             Database.EnsureCreated();
         }
 
