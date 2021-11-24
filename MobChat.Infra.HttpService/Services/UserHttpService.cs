@@ -15,7 +15,7 @@ namespace MobChat.Infra.HttpService.Services
         {
             var httpClient = new HttpClient();
             StringContent httpContent = new StringContent(serializedUser, Encoding.UTF8, "application/json");
-            var result = httpClient.PostAsync("https://mobchatusermicroserviceapi.azurewebsites.net/api/AppUsers", httpContent).Result;
+            var result = httpClient.PostAsync("https:///api/AppUsers", httpContent).Result;
 
             if (!result.IsSuccessStatusCode)
                 return false;
@@ -26,7 +26,7 @@ namespace MobChat.Infra.HttpService.Services
         public async Task<String> GetAppUserById(Guid userId)
         {
             var httpClient = new HttpClient();
-            var result = httpClient.GetAsync($"https://mobchatusermicroserviceapi.azurewebsites.net/api/AppUsers/{userId}").Result;
+            var result = httpClient.GetAsync($"https:///api/AppUsers/{userId}").Result;
 
             String serializedResult = await result.Content.ReadAsStringAsync();
             return serializedResult;
