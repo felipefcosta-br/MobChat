@@ -35,7 +35,7 @@ namespace MobChat.Infra.HttpService.Services
         public async Task<String> GetAppUserByAccountId(Guid accountId)
         {
             var httpClient = new HttpClient();
-            var result = httpClient.GetAsync($"https://mobchatusermicroserviceapi.azurewebsites.net/api/AppUsers/account/{accountId}").Result;
+            var result = httpClient.GetAsync($"").Result;
 
             String serializedResult = await result.Content.ReadAsStringAsync();
             return serializedResult;
@@ -44,7 +44,7 @@ namespace MobChat.Infra.HttpService.Services
         public async Task<String> GetUserByUserName(string userName)
         {
             var httpClient = new HttpClient();
-            var result = httpClient.GetAsync($"https://mobchatusermicroserviceapi.azurewebsites.net/api/AppUsers/username/{userName}").Result;
+            var result = httpClient.GetAsync($"").Result;
             
             if (!result.IsSuccessStatusCode)
                 return null;
@@ -56,7 +56,7 @@ namespace MobChat.Infra.HttpService.Services
         public async Task<string> SearchForUser(string searchText)
         {
             var httpClient = new HttpClient();
-            var result = httpClient.GetAsync($"https://mobchatusermicroserviceapi.azurewebsites.net/api/AppUsers/search/user/{searchText}").Result;
+            var result = httpClient.GetAsync($"").Result;
 
             if (!result.IsSuccessStatusCode)
                 return null;
