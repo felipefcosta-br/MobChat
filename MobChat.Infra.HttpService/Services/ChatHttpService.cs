@@ -26,7 +26,7 @@ namespace MobChat.Infra.HttpService.Services
 
             //Android
             string ip = "10.0.2.2";
-            //string ip = "https://mobchatchatmicroserviceapi.azurewebsites.net";
+            //string ip = "";
             string url = $"http://{ip}:5000/hubs/chathub";
 
             hubConnection = new HubConnectionBuilder().
